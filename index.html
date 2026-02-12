@@ -71,7 +71,8 @@
             transform: translate(-2px, -2px);
         }
 
-        /* HAMBURGER */
+        /* Social icons only appear in mobile hamburger panel */
+        .nav-social-row { display: none; }
         .hamburger {
             display: none;
             flex-direction: column;
@@ -82,8 +83,9 @@
             box-shadow: 3px 3px 0 var(--black);
             padding: 8px 10px;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 1201;
             flex-shrink: 0;
+            transition: opacity 0.2s;
         }
 
         .hamburger span {
@@ -91,6 +93,22 @@
             width: 22px; height: 3px;
             background: var(--black);
         }
+
+        /* Hide hamburger when project modal is open */
+        .hamburger.hidden { opacity: 0; pointer-events: none; }
+
+        /* Nav side panel overlay — only covers area left of panel */
+        .nav-overlay {
+            position: fixed;
+            top: 0; left: 0; bottom: 0;
+            right: min(280px, 82vw);
+            background: rgba(0,0,0,0.45);
+            z-index: 1199;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+        .nav-overlay.active { opacity: 1; visibility: visible; }
 
         @media (max-width: 768px) {
             nav {
@@ -103,28 +121,35 @@
 
             .hamburger { display: flex; }
 
+            /* Side panel — always rendered, slides off-screen when closed */
             .nav-links {
-                display: none;
                 position: fixed;
-                top: 56px; left: 0; right: 0;
+                top: 0; right: 0;
+                height: 100%;
+                width: min(280px, 82vw);
                 background: var(--yellow);
-                border-bottom: 4px solid var(--black);
-                box-shadow: 0 4px 0 var(--black);
+                border-left: 4px solid var(--black);
+                box-shadow: -6px 0 0 var(--black);
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0;
-                padding: 0.5rem 0;
-                z-index: 999;
+                padding: 4.5rem 0 2rem;
+                z-index: 1200;
+                transform: translateX(110%);
+                transition: transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
+                display: flex !important;
+                box-sizing: border-box;
+                overflow-y: auto;
             }
 
-            .nav-links.active { display: flex; }
+            .nav-links.active { transform: translateX(0); }
 
-            .nav-links li { width: 100%; }
+            .nav-links li:not(.nav-social-row) { width: 100%; }
 
             .nav-links a {
                 display: block;
                 width: 100%;
-                padding: 0.7rem 1.5rem;
+                padding: 0.85rem 1.5rem;
                 border: none;
                 border-bottom: 2px solid rgba(0,0,0,0.1);
                 font-size: 1.2rem;
@@ -136,9 +161,52 @@
                 background: var(--red);
                 color: var(--yellow);
             }
+
+            .nav-social-row {
+                display: flex;
+                flex-direction: row;
+                gap: 0.6rem;
+                padding: 1rem 1.5rem;
+                border-top: 3px solid rgba(0,0,0,0.15);
+                margin-top: 0.3rem;
+                width: 100% !important;
+                box-sizing: border-box;
+            }
+
+            .nav-social-row .nav-social-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 38px; height: 38px;
+                min-width: 38px;
+                background: var(--white);
+                border: 3px solid var(--black);
+                box-shadow: 2px 2px 0 var(--black);
+                text-decoration: none;
+                overflow: hidden;
+                flex-shrink: 0;
+            }
+
+            .nav-social-row .nav-social-icon svg {
+                display: block;
+                width: 20px !important;
+                height: 20px !important;
+                min-width: 20px;
+                min-height: 20px;
+                max-width: 20px;
+                max-height: 20px;
+            }
+
+            .nav-social-row .nav-social-icon:hover {
+                background: var(--red);
+            }
+
+            .nav-social-row .nav-social-icon:hover svg {
+                filter: brightness(0) invert(1);
+            }
         }
 
-        /* HERO */
+        /* HERO */        /* HERO */
         .hero {
             min-height: 100vh;
             display: flex; align-items: center;
@@ -373,13 +441,11 @@
             background: var(--white);
             border: 4px solid var(--black);
             box-shadow: var(--shadow);
-            transition: transform 0.12s ease, box-shadow 0.12s ease;
-            cursor: pointer;
+            cursor: default;
         }
 
         .project-card:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 9px 9px 0 var(--black);
+            /* no lift on card hover — only button should be interactive */
         }
 
         .project-image {
@@ -484,77 +550,6 @@
 
         .timeline-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
-        /* CONTACT */
-        .contact-content {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 4rem; align-items: start;
-        }
-
-        .contact-info h3 {
-            font-family: 'Bangers', cursive;
-            font-size: 2.2rem; letter-spacing: 2px;
-            line-height: 1.2; margin-bottom: 1rem;
-            text-shadow: 3px 3px 0 var(--red);
-        }
-
-        .contact-info p {
-            font-size: 0.95rem; font-weight: 700; line-height: 1.8; color: #444;
-            background: var(--white);
-            border: 3px solid var(--black); padding: 1rem;
-            box-shadow: var(--shadow-sm); margin-bottom: 1.5rem;
-        }
-
-        .contact-links { display: flex; flex-direction: column; gap: 0.7rem; }
-
-        .contact-link {
-            display: flex; align-items: center; gap: 0.9rem;
-            text-decoration: none; font-weight: 700; font-size: 0.95rem;
-            color: var(--black);
-            background: var(--white);
-            border: 3px solid var(--black); padding: 0.6rem 1rem;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.12s ease;
-        }
-
-        .contact-link:hover {
-            background: var(--yellow);
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0 var(--black);
-        }
-
-        .contact-link-icon { font-size: 1.2rem; }
-
-        .contact-form {
-            background: var(--white);
-            border: 4px solid var(--black); padding: 2.5rem;
-            box-shadow: var(--shadow);
-        }
-
-        .form-group { margin-bottom: 1.5rem; }
-
-        .form-group label {
-            display: block; margin-bottom: 0.4rem;
-            font-size: 0.85rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 1px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%; padding: 0.75rem;
-            background: var(--bg);
-            border: 3px solid var(--black);
-            font-family: 'Comic Neue', cursive;
-            font-size: 0.95rem; font-weight: 700;
-            box-shadow: 3px 3px 0 var(--black);
-            transition: background 0.15s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus { outline: none; background: var(--yellow); }
-
-        .form-group textarea { min-height: 130px; resize: vertical; }
-        .submit-btn { width: 100%; }
-
         /* FOOTER */
         footer {
             padding: 1.5rem 4rem;
@@ -564,6 +559,7 @@
             font-family: 'Bangers', cursive;
             font-size: 1.1rem; letter-spacing: 2px;
         }
+
 
         /* ANIMATIONS */
         @keyframes popIn {
@@ -1078,6 +1074,7 @@
 <body>
 
 <!-- NAV -->
+<div class="nav-overlay" id="navOverlay"></div>
 <nav id="navbar">
     <div class="logo">Daipayan Sen</div>
     <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
@@ -1090,8 +1087,32 @@
         <li><a href="#research">Research</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
         <li><a href="Daipayan_Sen_Resume.pdf" target="_blank">Resume</a></li>
+        <li class="nav-social-row">
+            <a href="mailto:sen00041@umn.edu" class="nav-social-icon" title="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+                    <polyline points="2,4 12,13 22,4"/>
+                </svg>
+            </a>
+            <a href="https://linkedin.com/in/daipayan-sen" target="_blank" class="nav-social-icon" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="#1a1a1a">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect x="2" y="9" width="4" height="12"/>
+                    <circle cx="4" cy="4" r="2"/>
+                </svg>
+            </a>
+            <a href="https://github.com/daipayansen-cyber/" target="_blank" class="nav-social-icon" title="GitHub">
+                <svg viewBox="0 0 98 96" fill="#1a1a1a">
+                    <path d="M49 1C22 1 0 23 0 50c0 22 14 40 33 47 2 .5 3-1 3-2v-8c-14 3-17-6-17-6-2-6-6-7-6-7-5-3 0-3 0-3 5 0 8 5 8 5 5 8 12 6 15 4 0-3 2-6 3-7-11-1-22-6-22-25 0-5 2-10 5-14-1-1-2-6 0-13 0 0 4-1 14 5a47 47 0 0 1 25 0c10-6 14-5 14-5 2 7 1 12 0 13 3 4 5 9 5 14 0 19-11 24-22 25 2 2 3 5 3 9v14c0 1 1 2 3 2 20-7 33-25 33-47C98 23 76 1 49 1z"/>
+                </svg>
+            </a>
+            <a href="https://scholar.google.com/citations?user=9elegBYAAAAJ&hl=en" target="_blank" class="nav-social-icon" title="Google Scholar">
+                <svg viewBox="0 0 24 24" fill="#1a1a1a">
+                    <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/>
+                </svg>
+            </a>
+        </li>
     </ul>
 </nav>
 
@@ -1424,14 +1445,13 @@
 <!-- CONTACT -->
 <section id="contact">
     <div class="section-header fade-in">
-        
         <h2 class="section-title">Let's Connect</h2>
     </div>
 
     <div style="text-align:center; max-width:800px; margin:0 auto;">
         <p style="font-size:1.2rem; font-weight:700; line-height:1.8; margin-bottom:3rem;">
             Have a project in mind? Want to collaborate? Or just want to say hi?
-            I’d love to hear from you!
+            I'd love to hear from you!
         </p>
 
         <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
@@ -1458,9 +1478,8 @@
 <!-- FOOTER -->
 <footer>
     <p>⚡ &copy; 2026 Daipayan &nbsp;|&nbsp; University of Minnesota &nbsp;|&nbsp; Mechanical Engineering ⚡</p>
-    <p style="font-size:0.75rem; opacity:0.5; margin-top:0.4rem; letter-spacing:1px;">v1.6</p>
+    <p style="font-size:0.75rem; opacity:0.5; margin-top:0.4rem; letter-spacing:1px;">v2.6</p>
 </footer>
-
 <!-- MODAL OVERLAY -->
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal" id="modal">
@@ -1756,6 +1775,10 @@ document.addEventListener('DOMContentLoaded', function() {
         modalTitle.textContent = data.title;
         if (activeModelCleanup) { activeModelCleanup(); activeModelCleanup = null; }
 
+        // Close nav panel and hide hamburger while project drawer is open
+        closeNav();
+        if (hamburger) hamburger.classList.add('hidden');
+
         // Show drawer immediately with a loading state for the media area
         const sectionsHTML = data.sections.map(sec => {
             if (sec.type === 'text') return `<div class="modal-section"><div class="modal-section-title">${sec.heading}</div><p>${sec.content}</p></div>`;
@@ -1798,6 +1821,8 @@ document.addEventListener('DOMContentLoaded', function() {
         modalOverlay.classList.remove('active');
         document.body.style.overflow = '';
         if (activeModelCleanup) { activeModelCleanup(); activeModelCleanup = null; }
+        // Restore hamburger button
+        if (hamburger) hamburger.classList.remove('hidden');
     }
 
     if (modalClose) modalClose.addEventListener('click', closeModal);
@@ -1835,24 +1860,33 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('resize', updateBubbleTail);
     }
 
-    // ── HAMBURGER ──
-    const hamburger = document.getElementById('hamburgerBtn');
-    const navLinks  = document.getElementById('navLinks');
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            navLinks.classList.toggle('active');
-        });
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
-        });
-        document.addEventListener('click', function(e) {
-            if (!navLinks.contains(e.target) && e.target !== hamburger) {
-                navLinks.classList.remove('active');
-            }
-        });
+    // ── HAMBURGER SIDE PANEL ──
+    const hamburger  = document.getElementById('hamburgerBtn');
+    const navLinks   = document.getElementById('navLinks');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openNav() {
+        if (!navLinks) return;
+        navLinks.classList.add('active');
+        if (navOverlay) navOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 
+    function closeNav() {
+        if (!navLinks) return;
+        navLinks.classList.remove('active');
+        if (navOverlay) navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', e => {
+            e.stopPropagation();
+            navLinks.classList.contains('active') ? closeNav() : openNav();
+        });
+        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
+        if (navOverlay) navOverlay.addEventListener('click', closeNav);
+    }
     // ── GLITCH BUTTONS ──
     document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('mouseenter', function() {
