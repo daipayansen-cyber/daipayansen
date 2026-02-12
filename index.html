@@ -1352,7 +1352,7 @@
         <li><a href="Daipayan_Sen_Resume.pdf" target="_blank">Resume</a></li>
         <li class="desktop-contact"><a href="#contact">Contact</a></li>
         <li class="nav-social-row">
-            <a href="mailto:sen00041@umn.edu" class="nav-social-icon" title="Email">
+            <a href="/cdn-cgi/l/email-protection#96e5f3f8a6a6a6a2a7d6e3fbf8b8f3f2e3" class="nav-social-icon" title="Email">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
                     <polyline points="2,4 12,13 22,4"/>
@@ -1716,7 +1716,7 @@
         </p>
 
         <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
-            <a href="mailto:sen00041@umn.edu" class="btn btn-primary" style="min-width:200px;">
+            <a href="/cdn-cgi/l/email-protection#a9daccc79999999d98e9dcc4c787cccddc" class="btn btn-primary" style="min-width:200px;">
                 ✉️ Say Hello
             </a>
 
@@ -1739,7 +1739,7 @@
 <!-- FOOTER -->
 <footer>
     <p>⚡ &copy; 2026 Daipayan &nbsp;|&nbsp; University of Minnesota &nbsp;|&nbsp; Mechanical Engineering ⚡</p>
-    <p style="font-size:0.75rem; opacity:0.5; margin-top:0.4rem; letter-spacing:1px;">v3.8</p>
+    <p style="font-size:0.75rem; opacity:0.5; margin-top:0.4rem; letter-spacing:1px;">v3.9</p>
 </footer>
 <!-- MODAL OVERLAY -->
 <div class="modal-overlay" id="modalOverlay">
@@ -2224,18 +2224,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (saved === '1') applyDark(true);
     } catch(e) {}
 
-    // Click to toggle (only if not dragging)
+    // ── DARK TOGGLE: tap to toggle, drag to move ──
     let didDrag = false;
-    if (darkToggle) {
-        darkToggle.addEventListener('click', () => {
-            if (!didDrag) applyDark(!document.body.classList.contains('dark'));
-            didDrag = false;
-        });
-    }
 
     // ── DRAGGABLE LOGIC ──
     if (darkToggle) {
         let dragging = false;
+        let touchDragged = false;
         let startX, startY, origX, origY;
 
         function getPos() {
@@ -2244,7 +2239,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function setPos(x, y) {
-            // Clamp to viewport
             const w = window.innerWidth  - darkToggle.offsetWidth  - 6;
             const h = window.innerHeight - darkToggle.offsetHeight - 6;
             x = Math.max(6, Math.min(x, w));
@@ -2255,7 +2249,7 @@ document.addEventListener('DOMContentLoaded', function() {
             darkToggle.style.top    = y + 'px';
         }
 
-        // Mouse
+        // Mouse: mousedown starts drag tracking, click fires after mouseup
         darkToggle.addEventListener('mousedown', e => {
             dragging = true; didDrag = false;
             const pos = getPos();
@@ -2275,25 +2269,41 @@ document.addEventListener('DOMContentLoaded', function() {
             dragging = false;
             darkToggle.style.cursor = 'grab';
         });
+        // Mouse click: toggle only if not dragged
+        darkToggle.addEventListener('click', () => {
+            if (!didDrag) applyDark(!document.body.classList.contains('dark'));
+            didDrag = false;
+        });
 
-        // Touch
+        // Touch: prevent synthetic click, handle tap in touchend
         darkToggle.addEventListener('touchstart', e => {
-            dragging = true; didDrag = false;
+            dragging = true; touchDragged = false;
             const pos = getPos();
             const t = e.touches[0];
             startX = t.clientX; startY = t.clientY;
             origX  = pos.x;     origY  = pos.y;
-            e.preventDefault();
+            e.preventDefault(); // blocks synthetic mouse/click events
         }, { passive: false });
+
         document.addEventListener('touchmove', e => {
             if (!dragging) return;
             const t = e.touches[0];
             const dx = t.clientX - startX;
             const dy = t.clientY - startY;
-            if (Math.abs(dx) > 4 || Math.abs(dy) > 4) didDrag = true;
-            setPos(origX + dx, origY + dy);
+            if (Math.abs(dx) > 6 || Math.abs(dy) > 6) touchDragged = true;
+            if (touchDragged) setPos(origX + dx, origY + dy);
+            e.preventDefault();
         }, { passive: false });
-        document.addEventListener('touchend', () => { dragging = false; });
+
+        document.addEventListener('touchend', () => {
+            if (!dragging) return;
+            dragging = false;
+            // Tap (no drag) = toggle dark mode
+            if (!touchDragged) {
+                applyDark(!document.body.classList.contains('dark'));
+            }
+            touchDragged = false;
+        });
     }
 
 }); // end DOMContentLoaded
