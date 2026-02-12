@@ -652,6 +652,32 @@
             background-size: 18px 18px;
         }
 
+        /* Education yellow tag pills */
+        .edu-tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .edu-tag-pill {
+            font-family: 'Bangers', cursive;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            background: var(--yellow);
+            color: var(--black);
+            border: 2px solid var(--black);
+            box-shadow: 2px 2px 0 var(--black);
+            padding: 0.2rem 0.8rem;
+        }
+
+        body.dark .edu-tag-pill {
+            background: var(--yellow);
+            color: #0f0f0f;
+            border-color: #e8e0cc;
+            box-shadow: 2px 2px 0 #e8e0cc;
+        }
+
         #contact {
             background-color: #fffbea;
             background-image: radial-gradient(circle, #c8b840 1.5px, transparent 1.5px);
@@ -1352,7 +1378,7 @@
         <li><a href="Daipayan_Sen_Resume.pdf" target="_blank">Resume</a></li>
         <li class="desktop-contact"><a href="#contact">Contact</a></li>
         <li class="nav-social-row">
-            <a href="/cdn-cgi/l/email-protection#96e5f3f8a6a6a6a2a7d6e3fbf8b8f3f2e3" class="nav-social-icon" title="Email">
+            <a href="/cdn-cgi/l/email-protection#c7b4a2a9f7f7f7f3f687b2aaa9e9a2a3b2" class="nav-social-icon" title="Email">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
                     <polyline points="2,4 12,13 22,4"/>
@@ -1652,51 +1678,52 @@
 <!-- EDUCATION -->
 <section id="education">
     <div class="section-header fade-in">
-        
         <h2 class="section-title">Academic Background</h2>
     </div>
 
     <div class="timeline">
+
         <div class="timeline-item fade-in">
             <div class="timeline-date">Sep 2022 — Sep 2027 (tentative)</div>
             <h3 class="timeline-title">Ph.D., Mechanical Engineering</h3>
-            <div class="timeline-company">University of Minnesota – Twin Cities, Minneapolis, MN</div>
-            <p class="timeline-description">
-                GPA: 3.78/4.00. Research focused on experimental diagnostics and applied numerical analysis in combustion and drying processes.
-            </p>
-            <div class="timeline-skills">
-                <span class="tag">Experimental Diagnostics</span>
-                <span class="tag">Numerical Analysis</span>
-                <span class="tag">GPA 3.78</span>
+            <div class="edu-tag-row">
+                <span class="edu-tag-pill">🏫 University of Minnesota</span>
+                <span class="edu-tag-pill">📊 GPA: 3.78 / 4.00</span>
             </div>
+            <p class="timeline-description">
+                ▶ Achievement placeholder — e.g. NSF Fellowship, award, honor<br>
+                ▶ Achievement placeholder — e.g. Best Paper Award at conference<br>
+                ▶ Achievement placeholder — e.g. Teaching assistant recognition
+            </p>
         </div>
 
         <div class="timeline-item fade-in">
             <div class="timeline-date">June 2024</div>
             <h3 class="timeline-title">M.S., Mechanical Engineering</h3>
-            <div class="timeline-company">University of Minnesota – Twin Cities, Minneapolis, MN</div>
-            <p class="timeline-description">
-                GPA: 3.77/4.00.
-            </p>
-            <div class="timeline-skills">
-                <span class="tag">GPA 3.77</span>
-                <span class="tag">UMN</span>
+            <div class="edu-tag-row">
+                <span class="edu-tag-pill">🏫 University of Minnesota</span>
+                <span class="edu-tag-pill">📊 GPA: 3.77 / 4.00</span>
             </div>
+            <p class="timeline-description">
+                ▶ Achievement placeholder — e.g. award, fellowship, recognition<br>
+                ▶ Achievement placeholder — e.g. thesis distinction, publication
+            </p>
         </div>
 
         <div class="timeline-item fade-in">
             <div class="timeline-date">July 2021</div>
             <h3 class="timeline-title">B.E., Mechanical Engineering</h3>
-            <div class="timeline-company">Jadavpur University, Kolkata, India</div>
-            <p class="timeline-description">
-                GPA: 9.12/10.00. Graduated ranked 6th in the Mechanical Engineering Class of 2021. AIChE FPB Graduate Student Award Finalist 2025.
-            </p>
-            <div class="timeline-skills">
-                <span class="tag">GPA 9.12/10</span>
-                <span class="tag">Ranked 6th</span>
-                <span class="tag">Jadavpur University</span>
+            <div class="edu-tag-row">
+                <span class="edu-tag-pill">🏫 Jadavpur University</span>
+                <span class="edu-tag-pill">📊 GPA: 9.12 / 10.00</span>
             </div>
+            <p class="timeline-description">
+                ▶ AIChE FPB Graduate Student Award Finalist 2025<br>
+                ▶ Graduated ranked 6th in the Mechanical Engineering Class of 2021<br>
+                ▶ Achievement placeholder — e.g. scholarship, distinction
+            </p>
         </div>
+
     </div>
 </section>
 
@@ -1714,7 +1741,7 @@
         </p>
 
         <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
-            <a href="/cdn-cgi/l/email-protection#a9daccc79999999d98e9dcc4c787cccddc" class="btn btn-primary" style="min-width:200px;">
+            <a href="/cdn-cgi/l/email-protection#7e0d1b104e4e4e4a4f3e0b1310501b1a0b" class="btn btn-primary" style="min-width:200px;">
                 ✉️ Say Hello
             </a>
 
@@ -1737,7 +1764,7 @@
 <!-- FOOTER -->
 <footer>
     <p>⚡ &copy; 2026 Daipayan &nbsp;|&nbsp; University of Minnesota &nbsp;|&nbsp; Mechanical Engineering ⚡</p>
-    <p style="font-size:0.75rem; opacity:0.5; margin-top:0.4rem; letter-spacing:1px;">v3.9</p>
+    <p style="font-size:0.75rem; opacity:0.5; margin-top:0.4rem; letter-spacing:1px;">v4.3</p>
 </footer>
 <!-- MODAL OVERLAY -->
 <div class="modal-overlay" id="modalOverlay">
@@ -1750,7 +1777,7 @@
     </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 document.addEventListener('DOMContentLoaded', function() {
 
     // ── POW/ZAP CLICK BUBBLES ──
