@@ -65,6 +65,73 @@
             transform: translate(-2px, -2px);
         }
 
+        /* HAMBURGER */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: white;
+            border: 3px solid var(--black);
+            box-shadow: 3px 3px 0 var(--black);
+            padding: 8px 10px;
+            cursor: pointer;
+            z-index: 1001;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px; height: 3px;
+            background: var(--black);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.7rem 1rem;
+                flex-wrap: nowrap;
+                position: fixed;
+            }
+
+            .logo { font-size: 1.4rem; letter-spacing: 2px; }
+
+            .hamburger { display: flex; }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 56px; left: 0; right: 0;
+                background: var(--yellow);
+                border-bottom: 4px solid var(--black);
+                box-shadow: 0 4px 0 var(--black);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                padding: 0.5rem 0;
+                z-index: 999;
+            }
+
+            .nav-links.active { display: flex; }
+
+            .nav-links li { width: 100%; }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 0.7rem 1.5rem;
+                border: none;
+                border-bottom: 2px solid rgba(0,0,0,0.1);
+                font-size: 1.2rem;
+            }
+
+            .nav-links a:hover {
+                transform: none;
+                box-shadow: none;
+                background: var(--red);
+                color: var(--yellow);
+            }
+        }
+
         /* HERO */
         .hero {
             min-height: 100vh;
@@ -654,18 +721,17 @@
         .modal-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
 
         @media (max-width: 900px) {
-            nav { padding: 0.9rem 1.5rem; }
-            .nav-links { gap: 0.8rem; }
-            .hero { padding: 6rem 2rem 4rem; }
-            .hero-container { grid-template-columns: 1fr; gap: 3rem; }
+            .hero { padding: 5rem 1.5rem 4rem; }
+            .hero-container { grid-template-columns: 1fr; gap: 2rem; }
             .hero-image-container { order: -1; }
-            .hero-image-wrapper { max-width: 300px; }
-            section { padding: 4rem 2rem; }
+            .hero-image-wrapper { max-width: 260px; }
+            section { padding: 4rem 1.5rem; }
             .projects-grid { grid-template-columns: 1fr; }
             .contact-content { grid-template-columns: 1fr; gap: 2.5rem; }
             .cta-buttons { flex-direction: column; }
             .btn { text-align: center; }
             .modal-body { padding: 1.2rem; }
+            .modal { width: 100vw !important; }
         }
         /* POW/ZAP CLICK BUBBLES */
         .comic-burst {
@@ -908,127 +974,7 @@
 }
 
 
-/* -------- Mobile Optimization -------- */
-
-@media (max-width: 768px) {
-
-    body {
-        overflow-x: hidden;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .modal {
-        width: 100% !important;
-        right: 0 !important;
-        left: 0 !important;
-        border-left: none !important;
-        box-shadow: none !important;
-    }
-
-    .modal-section {
-        padding: 0 1rem;
-    }
-
-    .modal-diagram-placeholder {
-        height: 180px;
-    }
-
-    .btn {
-        width: 100%;
-        text-align: center;
-    }
-
-    nav {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav .nav-links {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-}
-
-
-/* -------- Mobile Nav Refinement -------- */
-
-@media (max-width: 768px) {
-
-    .logo,
-    .nav-logo,
-    .brand-name {
-        display: none !important;
-    }
-
-    nav {
-        padding: 0.6rem 1rem !important;
-    }
-
-    nav .nav-links {
-        width: 100%;
-        align-items: center;
-    }
-}
-
-
-/* -------- Hamburger Menu -------- */
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    background: white;
-    border: 3px solid var(--black);
-    box-shadow: 4px 4px 0 var(--black);
-    padding: 8px;
-    cursor: pointer;
-    position: absolute;
-    right: 1rem;
-    top: 0.6rem;
-    z-index: 2000;
-}
-
-.hamburger span {
-    width: 24px;
-    height: 3px;
-    background: var(--black);
-}
-
-@media (max-width: 768px) {
-
-    .hamburger {
-        display: flex;
-    }
-
-    nav .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: white;
-        border-top: 4px solid var(--black);
-        padding: 1rem 0;
-    }
-
-    nav .nav-links.active {
-        display: flex;
-    }
-}
-
-
-
-/* ---- Clean Research Style for Highlighted Projects ---- */
-
-
-
-/* ---- Highlighted Projects Button Style ---- */
-
-
-
-/* ---- Clean Highlighted Projects Banner ---- */
+        /* POW/ZAP CLICK BUBBLES */
 .highlighted-banner {
     display: inline-block;
     background: #e30613;
@@ -1066,21 +1012,19 @@
 <!-- NAV -->
 <nav id="navbar">
     <div class="logo">Daipayan Sen</div>
-    <ul class="nav-links">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
-            <li><a href="Daipayan_Sen_Resume.pdf" target="_blank">Resume</a></li>
+        <li><a href="Daipayan_Sen_Resume.pdf" target="_blank">Resume</a></li>
     </ul>
-
-<button class="hamburger" id="hamburgerBtn">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
-
 </nav>
 
 <!-- HERO -->
@@ -1423,7 +1367,7 @@
         </p>
 
         <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
-            <a href="mailto:your.email@umn.edu" class="btn btn-primary" style="min-width:200px;">
+            <a href="/cdn-cgi/l/email-protection#7d0412080f5318101c14113d08101353181908" class="btn btn-primary" style="min-width:200px;">
                 ✉️ Say Hello
             </a>
 
@@ -1448,62 +1392,6 @@
     <p>⚡ &copy; 2026 Daipayan &nbsp;|&nbsp; University of Minnesota &nbsp;|&nbsp; Mechanical Engineering ⚡</p>
 </footer>
 
-<script>
-    // POW/ZAP click bubbles
-    const words = ['POW!', 'ZAP!', 'BAM!', 'KA-POW!', 'WHAM!', 'BOOM!', 'ZOW!', 'BLAM!'];
-    const colors = ['#e8213a', '#ffe600', '#00c8f0', '#ff6b35', '#ff9ebc'];
-
-    document.addEventListener('click', function(e) {
-        const word = words[Math.floor(Math.random() * words.length)];
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        const size = Math.random() * 40 + 60; // 60-100px star
-        const points = 8 + Math.floor(Math.random() * 4); // 8-11 point star
-
-        // Draw starburst SVG background
-        const svgNS = 'http://www.w3.org/2000/svg';
-        const svg = document.createElementNS(svgNS, 'svg');
-        svg.setAttribute('width', size * 2.5);
-        svg.setAttribute('height', size * 2.5);
-        svg.style.left = e.clientX + 'px';
-        svg.style.top = e.clientY + 'px';
-        svg.classList.add('comic-burst-bg');
-
-        // Build starburst polygon points
-        const cx = size * 1.25, cy = size * 1.25;
-        const outerR = size, innerR = size * 0.55;
-        let pts = '';
-        for (let i = 0; i < points * 2; i++) {
-            const angle = (i * Math.PI / points) - Math.PI / 2;
-            const r = i % 2 === 0 ? outerR : innerR;
-            pts += `${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)} `;
-        }
-
-        const poly = document.createElementNS(svgNS, 'polygon');
-        poly.setAttribute('points', pts.trim());
-        poly.setAttribute('fill', color);
-        poly.setAttribute('stroke', '#1a1a1a');
-        poly.setAttribute('stroke-width', '4');
-        svg.appendChild(poly);
-        document.body.appendChild(svg);
-
-        // Text on top
-        const burst = document.createElement('div');
-        burst.classList.add('comic-burst');
-        burst.textContent = word;
-        burst.style.left = e.clientX + 'px';
-        burst.style.top = e.clientY + 'px';
-        burst.style.color = color === '#ffe600' ? '#1a1a1a' : '#ffe600';
-        document.body.appendChild(burst);
-
-        // Clean up
-        setTimeout(() => {
-            burst.remove();
-            svg.remove();
-        }, 750);
-    });
-
-</script>
-
 <!-- MODAL OVERLAY -->
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal" id="modal">
@@ -1516,118 +1404,77 @@
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // ── POW/ZAP CLICK BUBBLES ──
+    const words = ['POW!', 'ZAP!', 'BAM!', 'KA-POW!', 'WHAM!', 'BOOM!', 'ZOW!', 'BLAM!'];
+    const burstColors = ['#e8213a', '#ffe600', '#00c8f0', '#ff6b35', '#ff9ebc'];
+    document.addEventListener('click', function(e) {
+        const word = words[Math.floor(Math.random() * words.length)];
+        const color = burstColors[Math.floor(Math.random() * burstColors.length)];
+        const size = Math.random() * 40 + 60;
+        const points = 8 + Math.floor(Math.random() * 4);
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('width', size * 2.5);
+        svg.setAttribute('height', size * 2.5);
+        svg.style.left = e.clientX + 'px';
+        svg.style.top = e.clientY + 'px';
+        svg.classList.add('comic-burst-bg');
+        const cx = size * 1.25, cy = size * 1.25;
+        const outerR = size, innerR = size * 0.55;
+        let pts = '';
+        for (let i = 0; i < points * 2; i++) {
+            const angle = (i * Math.PI / points) - Math.PI / 2;
+            const r = i % 2 === 0 ? outerR : innerR;
+            pts += `${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)} `;
+        }
+        const poly = document.createElementNS(svgNS, 'polygon');
+        poly.setAttribute('points', pts.trim());
+        poly.setAttribute('fill', color);
+        poly.setAttribute('stroke', '#1a1a1a');
+        poly.setAttribute('stroke-width', '4');
+        svg.appendChild(poly);
+        document.body.appendChild(svg);
+        const burst = document.createElement('div');
+        burst.classList.add('comic-burst');
+        burst.textContent = word;
+        burst.style.left = e.clientX + 'px';
+        burst.style.top = e.clientY + 'px';
+        burst.style.color = color === '#ffe600' ? '#1a1a1a' : '#ffe600';
+        document.body.appendChild(burst);
+        setTimeout(() => { burst.remove(); svg.remove(); }, 750);
+    });
+
     // ── PROJECT DATA ──
     const projects = {
         combustion: {
             title: 'High-Pressure Optical Combustion Chamber',
             sections: [
-                {
-                    heading: 'Overview',
-                    type: 'text',
-                    content: 'Designed and assembled a unique optically-accessible 8L 100-bar combustion chamber with an optical prechamber at the Murphy Engine Research Laboratory (MERL), University of Minnesota. The chamber enables fundamental combustion studies at conditions relevant to heavy-duty engines and gas compressors.'
-                },
-                {
-                    heading: 'Methods & Techniques',
-                    type: 'list',
-                    content: [
-                        'Simultaneous high-speed direct, Schlieren, and chemiluminescence imaging to capture flame propagation and jet formation dynamics',
-                        'Integration of thermocouples, pressure transducers, PID control, and NI cDAQ systems',
-                        'Designed fuel pre-mixing chambers for constant volume combustion vessels and turbine combustors',
-                        'Non-thermal plasma-assisted and nanosecond pulsed discharge ignition studies'
-                    ]
-                },
-                {
-                    heading: 'Key Outcomes',
-                    type: 'list',
-                    content: [
-                        'Drafted SOPs and trained new researchers, reducing experimental downtime',
-                        'Collaborated with Cooper Machinery Services, Texas A&M, University of Alabama, and Colorado School of Mines',
-                        'Published findings in Review of Scientific Instruments and Proceedings of the Combustion Institute'
-                    ]
-                },
-                {
-                    heading: 'Publications',
-                    type: 'list',
-                    content: [
-                        'Sen, D., & Biswas, S. "Optical prechamber-equipped high-pressure large-bore optical combustor," Review of Scientific Instruments, 96(3), 2025.',
-                        'Buchanan, K., Dhotre, A., Sen, D., et al. "Interaction and ignition process of multiple injections of oxygenated fuels," Proceedings of the Combustion Institute, 41, 2025.'
-                    ]
-                },
+                { heading: 'Overview', type: 'text', content: 'Designed and assembled a unique optically-accessible 8L 100-bar combustion chamber with an optical prechamber at the Murphy Engine Research Laboratory (MERL), University of Minnesota. The chamber enables fundamental combustion studies at conditions relevant to heavy-duty engines and gas compressors.' },
+                { heading: 'Methods & Techniques', type: 'list', content: ['Simultaneous high-speed direct, Schlieren, and chemiluminescence imaging to capture flame propagation and jet formation dynamics', 'Integration of thermocouples, pressure transducers, PID control, and NI cDAQ systems', 'Designed fuel pre-mixing chambers for constant volume combustion vessels and turbine combustors', 'Non-thermal plasma-assisted and nanosecond pulsed discharge ignition studies'] },
+                { heading: 'Key Outcomes', type: 'list', content: ['Drafted SOPs and trained new researchers, reducing experimental downtime', 'Collaborated with Cooper Machinery Services, Texas A&M, University of Alabama, and Colorado School of Mines', 'Published findings in Review of Scientific Instruments and Proceedings of the Combustion Institute'] },
+                { heading: 'Publications', type: 'list', content: ['Sen, D., & Biswas, S. "Optical prechamber-equipped high-pressure large-bore optical combustor," Review of Scientific Instruments, 96(3), 2025.', 'Buchanan, K., Dhotre, A., Sen, D., et al. "Interaction and ignition process of multiple injections of oxygenated fuels," Proceedings of the Combustion Institute, 41, 2025.'] },
                 { heading: 'Tools & Skills', type: 'tags', content: ['Schlieren Imaging', 'Chemiluminescence', 'High-Speed Imaging', 'NI cDAQ', 'PID Control', 'SolidWorks', 'Pressure Transducers'] }
             ]
         },
         drying: {
             title: 'Drying of Hygroscopic Porous Biomaterials',
             sections: [
-                {
-                    heading: 'Overview',
-                    type: 'text',
-                    content: 'Experimental and numerical investigation of convective drying of hygroscopic porous biomaterials such as paper, pulp, and corn under convective, conductive, RF heating, and ultrasonic agitation at the Biobased Process & Products Engineering Lab, UMN.'
-                },
-                {
-                    heading: 'Methods & Techniques',
-                    type: 'list',
-                    content: [
-                        'Wind-tunnel drying experiments capturing transient moisture and temperature histories via IR thermography and laser-based moisture sensing',
-                        'Designed temperature and humidity-controlled test chambers for complex permittivity characterization (25–90°C, 0–50% moisture)',
-                        'Multiphase heat and mass transfer simulations incorporating bound water removal, capillarity, and diffusion in COMSOL and STAR-CCM+',
-                        'Radiofrequency (RF)-assisted heating as an auxiliary energy application method'
-                    ]
-                },
-                {
-                    heading: 'Key Outcomes',
-                    type: 'list',
-                    content: [
-                        'Reduced variability in experimental data through optimized sample holder design and minimization of flow separation',
-                        'Developed MATLAB and Excel-based data tracking tools for post-processing raw sensor and image data',
-                        'Published in International Journal of Heat and Mass Transfer (2026) and International Journal of Thermal Sciences (2025)'
-                    ]
-                },
-                {
-                    heading: 'Publications',
-                    type: 'list',
-                    content: [
-                        'Sen, D., et al. "Multiphysics simulation and experimental validation of convective drying of hygroscopic porous biomaterials," Int. J. Heat Mass Transfer, 256, 2026.',
-                        'Sampath, K., Huang, H., Sen, D., & Ramaswamy, S. "RF-assisted drying of paper and board," Int. J. Thermal Sciences, 217, 2025.'
-                    ]
-                },
+                { heading: 'Overview', type: 'text', content: 'Experimental and numerical investigation of convective drying of hygroscopic porous biomaterials such as paper, pulp, and corn under convective, conductive, RF heating, and ultrasonic agitation at the Biobased Process & Products Engineering Lab, UMN.' },
+                { heading: 'Methods & Techniques', type: 'list', content: ['Wind-tunnel drying experiments capturing transient moisture and temperature histories via IR thermography and laser-based moisture sensing', 'Designed temperature and humidity-controlled test chambers for complex permittivity characterization (25–90°C, 0–50% moisture)', 'Multiphase heat and mass transfer simulations incorporating bound water removal, capillarity, and diffusion in COMSOL and STAR-CCM+', 'Radiofrequency (RF)-assisted heating as an auxiliary energy application method'] },
+                { heading: 'Key Outcomes', type: 'list', content: ['Reduced variability in experimental data through optimized sample holder design and minimization of flow separation', 'Developed MATLAB and Excel-based data tracking tools for post-processing raw sensor and image data', 'Published in International Journal of Heat and Mass Transfer (2026) and International Journal of Thermal Sciences (2025)'] },
+                { heading: 'Publications', type: 'list', content: ['Sen, D., et al. "Multiphysics simulation and experimental validation of convective drying of hygroscopic porous biomaterials," Int. J. Heat Mass Transfer, 256, 2026.', 'Sampath, K., Huang, H., Sen, D., & Ramaswamy, S. "RF-assisted drying of paper and board," Int. J. Thermal Sciences, 217, 2025.'] },
                 { heading: 'Tools & Skills', type: 'tags', content: ['IR Thermography', 'COMSOL', 'STAR-CCM+', 'MATLAB', 'RF Heating', 'LabVIEW', 'NI cDAQ', 'Coaxial Probe'] }
             ]
         },
         ml: {
             title: 'ML-Augmented Flame Front Detection',
             sections: [
-                {
-                    heading: 'Overview',
-                    type: 'text',
-                    content: 'A physics-guided machine learning framework for automated flame edge detection in high-speed combustion imaging, developed in collaboration with the Advanced Propulsion & Diagnostics Laboratory (APDL) at Colorado School of Mines. Applied to sustainable aviation fuel research.'
-                },
-                {
-                    heading: 'Methods & Techniques',
-                    type: 'list',
-                    content: [
-                        'Curated and pre-processed grayscale high-speed image sequences for ResNet training on flame edges',
-                        'Formalized reproducibility metrics to ensure consistency of processed data across research teams',
-                        'Supervised machine learning using scikit-learn and Python for regression and classification tasks',
-                        'Physics-guided framework integrating domain knowledge with data-driven approaches'
-                    ]
-                },
-                {
-                    heading: 'Key Outcomes',
-                    type: 'list',
-                    content: [
-                        'Demonstrated ML-augmented flame front detection competitive with manual expert annotation',
-                        'Established reproducible data pipeline for multi-institution collaboration',
-                        'Presented at AIAA SciTech 2026'
-                    ]
-                },
-                {
-                    heading: 'Publications',
-                    type: 'list',
-                    content: [
-                        'Ahmed, T., Rajaganapathy, S., Sen, D., et al. "Machine Learning-Augmented Flame Front Detection in High-Speed Imaging: A Physics-Guided Framework," AIAA SciTech, 2026.'
-                    ]
-                },
+                { heading: 'Overview', type: 'text', content: 'A physics-guided machine learning framework for automated flame edge detection in high-speed combustion imaging, developed in collaboration with the Advanced Propulsion & Diagnostics Laboratory (APDL) at Colorado School of Mines. Applied to sustainable aviation fuel research.' },
+                { heading: 'Methods & Techniques', type: 'list', content: ['Curated and pre-processed grayscale high-speed image sequences for ResNet training on flame edges', 'Formalized reproducibility metrics to ensure consistency of processed data across research teams', 'Supervised machine learning using scikit-learn and Python for regression and classification tasks', 'Physics-guided framework integrating domain knowledge with data-driven approaches'] },
+                { heading: 'Key Outcomes', type: 'list', content: ['Demonstrated ML-augmented flame front detection competitive with manual expert annotation', 'Established reproducible data pipeline for multi-institution collaboration', 'Presented at AIAA SciTech 2026'] },
+                { heading: 'Publications', type: 'list', content: ['Ahmed, T., Rajaganapathy, S., Sen, D., et al. "Machine Learning-Augmented Flame Front Detection in High-Speed Imaging: A Physics-Guided Framework," AIAA SciTech, 2026.'] },
                 { heading: 'Tools & Skills', type: 'tags', content: ['ResNet', 'Python', 'scikit-learn', 'Image Processing', 'Supervised ML', 'Sustainable Aviation Fuels', 'High-Speed Imaging'] }
             ]
         },
@@ -1643,7 +1490,7 @@
         drying_sim: {
             title: 'Multiphysics Drying Simulation',
             sections: [
-                { heading: 'Overview', type: 'text', content: 'Modeling of drying cycles in a Fourdrinier paper machine by implementing multiphase heat and mass transfer simulations of hygroscopic porous materials in COMSOL Multiphysics and STAR-CCM+. The work incorporates fundamental physics including bound water removal, capillarity, and diffusion, as well as auxiliary RF-assisted heating.' },
+                { heading: 'Overview', type: 'text', content: 'Modeling of drying cycles in a Fourdrinier paper machine by implementing multiphase heat and mass transfer simulations of hygroscopic porous materials in COMSOL Multiphysics and STAR-CCM+. Incorporates bound water removal, capillarity, diffusion, and RF-assisted heating.' },
                 { heading: 'Methods & Techniques', type: 'list', content: ['Multiphase heat and mass transfer simulations incorporating bound water removal, capillarity, and diffusion', 'Radiofrequency-assisted heating modeled as an auxiliary energy source', 'Model validation against experimental IR thermography and moisture sensor data', 'MATLAB-based post-processing for heat and mass transfer coefficient estimation'] },
                 { heading: 'Key Outcomes', type: 'list', content: ['Published simulation-experiment validation study in International Journal of Heat and Mass Transfer (2026)', 'Demonstrated RF heating significantly enhances drying efficiency in paper/board applications', 'Models adopted for industrial process design recommendations'] },
                 { heading: 'Publications', type: 'list', content: ['Sen, D., et al. "Multiphysics simulation and experimental validation of convective drying of hygroscopic porous biomaterials," Int. J. Heat Mass Transfer, 256, 2026.', 'Sampath, K., Huang, H., Sen, D., & Ramaswamy, S. "RF-assisted drying of paper and board," Int. J. Thermal Sciences, 217, 2025.'] },
@@ -1653,114 +1500,56 @@
         trachea: {
             title: 'Multiphase Flow in Tracheal Networks',
             sections: [
-                { heading: 'Overview', type: 'text', content: 'Developed and modeled anatomically-realistic 3D branching networks replicating the human trachea at the Neptune CFD Laboratory, Jadavpur University. Performed multiphase simulations to examine the degree of deposition of foreign particulate matter during inhalation and exhalation cycles.' },
+                { heading: 'Overview', type: 'text', content: 'Developed and modeled anatomically-realistic 3D branching networks replicating the human trachea at the Neptune CFD Laboratory, Jadavpur University. Performed multiphase simulations to examine deposition of foreign particulate matter during inhalation and exhalation cycles.' },
                 { heading: 'Methods & Techniques', type: 'list', content: ['3D reconstruction of tracheal branching geometry in SolidWorks/DesignModeler', 'Multiphase Euler-Lagrange particle tracking simulations in ANSYS Fluent', 'Parametric study of particle sizes, flow rates, and deposition sites', 'User-defined functions (UDF) for custom boundary conditions'] },
                 { heading: 'Key Outcomes', type: 'list', content: ['Identified critical deposition zones in tracheal bifurcations relevant to drug delivery and respiratory health', 'Characterized deposition efficiency as a function of particle size and breathing rate', 'Published in IOP Conference Series: Materials Science and Engineering'] },
                 { heading: 'Publications', type: 'list', content: ['Ghosh, A., Sen, D., et al. "Multiphase dynamics in a three dimensional branching network," IOP Conf. Series, 1080(1), 2021.'] },
                 { heading: 'Tools & Skills', type: 'tags', content: ['ANSYS Fluent', 'Multiphase CFD', 'Particle Deposition', 'Trachea Geometry', 'UDF', 'Biomedical Engineering'] }
             ]
         },
-
         cfd: {
             title: 'Fluid Flow Through Porous Multibody Systems',
             sections: [
-                {
-                    heading: 'Overview',
-                    type: 'text',
-                    content: 'Computational investigation of fluid flow through porous multibody systems at the Neptune CFD Laboratory, Jadavpur University. Focused on entropy generation characterization for electronic cooling optimization and multiphase dynamics in anatomical branching networks.'
-                },
-                {
-                    heading: 'Methods & Techniques',
-                    type: 'list',
-                    content: [
-                        'Darcy–Brinkman–Forchheimer formulations in ANSYS Fluent with user-defined functions (UDF) for custom source terms and property models',
-                        'Characterized entropy generation distribution for optimizing electronic cooling configurations',
-                        'Developed and modeled 3D branching networks replicating the human trachea',
-                        'Multiphase simulations examining deposition of foreign matter during inhalation and exhalation'
-                    ]
-                },
-                {
-                    heading: 'Key Outcomes',
-                    type: 'list',
-                    content: [
-                        'Identified optimal porous configurations for minimizing entropy generation in cooling applications',
-                        'Characterized particle deposition patterns in tracheal branching geometries',
-                        'Published in Physica Scripta and IOP Conference Series'
-                    ]
-                },
-                {
-                    heading: 'Publications',
-                    type: 'list',
-                    content: [
-                        'Sen, D., et al. "Forced convection and entropy generation past a series of porous bodies," Physica Scripta, 96(12), 2021.',
-                        'Ghosh, A., Sen, D., et al. "Multiphase dynamics in a three dimensional branching network," IOP Conf. Series, 2021.'
-                    ]
-                },
-                { heading: 'Tools & Skills', type: 'tags', content: ['ANSYS Fluent', 'UDF', 'Entropy Generation', 'Multiphase CFD', 'Porous Media', 'Trachea Modeling', 'Electronic Cooling'] }
+                { heading: 'Overview', type: 'text', content: 'Computational investigation of fluid flow through porous multibody systems at the Neptune CFD Laboratory, Jadavpur University. Focused on entropy generation characterization for electronic cooling optimization.' },
+                { heading: 'Methods & Techniques', type: 'list', content: ['Darcy–Brinkman–Forchheimer formulations in ANSYS Fluent with user-defined functions (UDF)', 'Characterized entropy generation distribution for optimizing electronic cooling configurations', 'Parametric studies across porosity, Reynolds number, and geometric configurations'] },
+                { heading: 'Key Outcomes', type: 'list', content: ['Identified optimal porous configurations for minimizing entropy generation', 'Published in Physica Scripta (2021)'] },
+                { heading: 'Publications', type: 'list', content: ['Sen, D., et al. "Forced convection and entropy generation past a series of porous bodies," Physica Scripta, 96(12), 2021.'] },
+                { heading: 'Tools & Skills', type: 'tags', content: ['ANSYS Fluent', 'UDF', 'Entropy Generation', 'Multiphase CFD', 'Porous Media', 'Electronic Cooling'] }
             ]
         }
     };
 
-    // ── MODAL LOGIC ──
-    const overlay = document.getElementById('modalOverlay');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
+    // ── MODAL ──
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalTitle   = document.getElementById('modalTitle');
+    const modalBody    = document.getElementById('modalBody');
 
-    
-function openModal(projectKey) {
-    const data = projects[projectKey];
-    modalTitle.textContent = data.title;
-
-    const diagramSection = `
-        <div class="modal-section">
-            <div class="modal-section-title">Diagram</div>
-            <div class="modal-diagram-placeholder">
-                DIAGRAM PLACEHOLDER
-            </div>
-        </div>
-    `;
-
-    const sectionsHTML = data.sections.map(sec => {
-        if (sec.type === 'text') {
-            return `<div class="modal-section">
-                <div class="modal-section-title">${sec.heading}</div>
-                <p>${sec.content}</p>
-            </div>`;
-        } else if (sec.type === 'list') {
-            return `<div class="modal-section">
-                <div class="modal-section-title">${sec.heading}</div>
-                <ul>${sec.content.map(i => `<li>${i}</li>`).join('')}</ul>
-            </div>`;
-        } else if (sec.type === 'tags') {
-            return `<div class="modal-section">
-                <div class="modal-section-title">${sec.heading}</div>
-                <div class="modal-tags">${sec.content.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-            </div>`;
-        }
-    }).join('');
-
-    modalBody.innerHTML = diagramSection + sectionsHTML;
-
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
+    function openModal(projectKey) {
+        const data = projects[projectKey];
+        if (!data) return;
+        modalTitle.textContent = data.title;
+        modalBody.innerHTML = data.sections.map(sec => {
+            if (sec.type === 'text') return `<div class="modal-section"><div class="modal-section-title">${sec.heading}</div><p>${sec.content}</p></div>`;
+            if (sec.type === 'list') return `<div class="modal-section"><div class="modal-section-title">${sec.heading}</div><ul>${sec.content.map(i => `<li>${i}</li>`).join('')}</ul></div>`;
+            if (sec.type === 'tags') return `<div class="modal-section"><div class="modal-section-title">${sec.heading}</div><div class="modal-tags">${sec.content.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>`;
+        }).join('');
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 
     function closeModal() {
-        overlay.classList.remove('active');
+        modalOverlay.classList.remove('active');
         document.body.style.overflow = '';
     }
 
     document.getElementById('modalClose').addEventListener('click', closeModal);
-    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
     document.querySelectorAll('.learn-more-btn').forEach(btn => {
         btn.addEventListener('click', () => openModal(btn.dataset.project));
     });
 
-
-    // Tab switcher
+    // ── TAB SWITCHER ──
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             if (window.innerWidth >= 1000) return;
@@ -1771,21 +1560,62 @@ function openModal(projectKey) {
         });
     });
 
-    // Dynamic speech bubble tail direction
+    // ── SPEECH BUBBLE TAIL ──
     const bubble = document.querySelector('.hero-description');
     function updateBubbleTail() {
         if (window.innerWidth <= 900) {
-            bubble.classList.remove('tail-right');
-            bubble.classList.add('tail-top');
+            bubble.classList.replace('tail-right', 'tail-top') || bubble.classList.add('tail-top');
         } else {
-            bubble.classList.remove('tail-top');
-            bubble.classList.add('tail-right');
+            bubble.classList.replace('tail-top', 'tail-right') || bubble.classList.add('tail-right');
         }
     }
     updateBubbleTail();
     window.addEventListener('resize', updateBubbleTail);
 
-    // Smooth scroll
+    // ── HAMBURGER ──
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+    document.addEventListener('click', function(e) {
+        if (!navLinks.contains(e.target) && e.target !== hamburger) {
+            navLinks.classList.remove('active');
+        }
+    });
+
+    // ── GLITCH BUTTONS ──
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            btn.classList.add('glitching');
+            setTimeout(() => btn.classList.remove('glitching'), 350);
+        });
+    });
+
+    // ── WIP COLUMN BALANCER ──
+    function balanceColumns() {
+        if (window.innerWidth < 1000) return;
+        const expGrid = document.querySelector('#tab-experimental .projects-grid');
+        const numGrid = document.querySelector('#tab-numerical .projects-grid');
+        if (!expGrid || !numGrid) return;
+        document.querySelectorAll('.wip-animation-tile').forEach(el => el.remove());
+        const expCount = expGrid.querySelectorAll('.project-card').length;
+        const numCount = numGrid.querySelectorAll('.project-card').length;
+        if (expCount === numCount) return;
+        const target = expCount < numCount ? expGrid : numGrid;
+        const tile = document.createElement('div');
+        tile.className = 'wip-animation-tile';
+        tile.innerHTML = '<div class="wip-center"><div class="wip-spinner"></div><div class="wip-text">WORK IN PROGRESS</div></div>';
+        target.appendChild(tile);
+    }
+    balanceColumns();
+    window.addEventListener('resize', balanceColumns);
+
+    // ── SMOOTH SCROLL ──
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -1794,120 +1624,21 @@ function openModal(projectKey) {
         });
     });
 
-    // Fade in on scroll
+    // ── FADE IN ON SCROLL ──
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Form submit
-    document.querySelector('form').addEventListener('submit', e => {
+    // ── FORM SUBMIT ──
+    const form = document.querySelector('form');
+    if (form) form.addEventListener('submit', e => {
         e.preventDefault();
         alert("Message sent! I'll get back to you soon. POW!");
         e.target.reset();
     });
 
-    
-
-
-    </script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-
-    function balanceColumns() {
-
-        if (window.innerWidth < 1000) return;
-
-        const expGrid = document.querySelector("#tab-experimental .projects-grid");
-        const numGrid = document.querySelector("#tab-numerical .projects-grid");
-
-        if (!expGrid || !numGrid) return;
-
-        // Remove existing WIP
-        document.querySelectorAll(".wip-animation-tile").forEach(el => el.remove());
-
-        const expCount = expGrid.querySelectorAll(".project-card").length;
-        const numCount = numGrid.querySelectorAll(".project-card").length;
-
-        const target = expCount < numCount ? expGrid : numGrid;
-
-        const tile = document.createElement("div");
-        tile.className = "wip-animation-tile";
-        tile.innerHTML = `
-            <div class="wip-center">
-                <div class="wip-spinner"></div>
-                <div class="wip-text">WORK IN PROGRESS</div>
-            </div>
-        `;
-
-        target.appendChild(tile);
-    }
-
-    balanceColumns();
-    window.addEventListener("resize", balanceColumns);
-
-});
+}); // end DOMContentLoaded
 </script>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-
-    document.querySelectorAll(".btn").forEach(btn => {
-        btn.addEventListener("mouseenter", function() {
-            btn.classList.add("glitching");
-            setTimeout(() => {
-                btn.classList.remove("glitching");
-            }, 350);
-        });
-    });
-
-});
-</script>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-
-    const hamburger = document.getElementById("hamburgerBtn");
-    const navLinks = document.querySelector("nav .nav-links");
-    const overlay = document.getElementById("overlay");
-
-    if (hamburger && navLinks) {
-        hamburger.addEventListener("click", function() {
-            navLinks.classList.toggle("active");
-        });
-    }
-
-    // Hide hamburger when drawer opens
-    const originalOpenModal = window.openModal;
-    window.openModal = function(projectKey) {
-        if (hamburger) hamburger.style.display = "none";
-        originalOpenModal(projectKey);
-    };
-
-    // Restore hamburger when drawer closes
-    const closeBtn = document.querySelector(".modal-close");
-    if (closeBtn) {
-        closeBtn.addEventListener("click", function() {
-            if (window.innerWidth <= 768 && hamburger) {
-                hamburger.style.display = "flex";
-            }
-        });
-    }
-
-    overlay?.addEventListener("click", function() {
-        if (window.innerWidth <= 768 && hamburger) {
-            hamburger.style.display = "flex";
-        }
-    });
-
-});
-</script>
-
 </body>
 </html>
