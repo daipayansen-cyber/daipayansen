@@ -18,6 +18,211 @@
             --shadow-sm: 4px 4px 0px #1a1a1a;
         }
 
+        /* ── DARK MODE ── */
+        body.dark {
+            --bg: #0f0f0f;
+            --white: #1e1e1e;
+            --black: #e8e0cc;
+            --red: #ff3f57;
+            --yellow: #ffe600;
+            --cyan: #00d4ff;
+            --shadow: 6px 6px 0px #e8e0cc;
+            --shadow-sm: 4px 4px 0px #e8e0cc;
+            color: #e8e0cc;
+        }
+
+        body.dark {
+            background-color: #0f0f0f;
+            background-image: radial-gradient(circle, #2a2a2a 1.5px, transparent 1.5px);
+            background-size: 18px 18px;
+        }
+
+        /* Dark section backgrounds */
+        body.dark #research {
+            background-color: #160e0e;
+            background-image: radial-gradient(circle, #3d1a1a 1.5px, transparent 1.5px);
+            background-size: 18px 18px;
+        }
+        body.dark #experience {
+            background-color: #0e0e18;
+            background-image: radial-gradient(circle, #1a1a3d 1.5px, transparent 1.5px);
+            background-size: 18px 18px;
+        }
+        body.dark #education {
+            background-color: #0e160e;
+            background-image: radial-gradient(circle, #1a3d1a 1.5px, transparent 1.5px);
+            background-size: 18px 18px;
+        }
+        body.dark #contact {
+            background-color: #141208;
+            background-image: radial-gradient(circle, #2e2a10 1.5px, transparent 1.5px);
+            background-size: 18px 18px;
+        }
+
+        /* Dark nav */
+        body.dark nav {
+            background: #0f0f0f;
+            border-bottom-color: #e8e0cc;
+        }
+        body.dark .logo { color: var(--yellow); }
+        body.dark .nav-links { background: #0f0f0f; }
+        body.dark .nav-links a { color: #e8e0cc; }
+        body.dark .nav-links a:hover { background: var(--red); color: var(--yellow); }
+        body.dark .hamburger { background: #1e1e1e; box-shadow: 3px 3px 0 #e8e0cc; border-color: #e8e0cc; }
+        body.dark .hamburger span { background: #e8e0cc; }
+        body.dark .nav-social-row { border-top-color: rgba(232,224,204,0.2); }
+        body.dark .nav-social-icon { background: #1e1e1e; border-color: #e8e0cc; box-shadow: 2px 2px 0 #e8e0cc; }
+        body.dark .nav-social-icon svg { filter: brightness(0) invert(1); }
+        body.dark .nav-social-icon:hover { background: var(--red); }
+
+        body.dark .project-description { color: #e8e0cc; }
+        body.dark .project-title { color: #e8e0cc; }
+        body.dark .project-category { color: var(--cyan); }
+
+        /* Timeline text */
+        body.dark .timeline-title { color: #e8e0cc; }
+        body.dark .timeline-company { color: var(--cyan); }
+        body.dark .timeline-description { color: #e8e0cc; background: #2a2a2a; border-color: #e8e0cc; box-shadow: 4px 4px 0 #e8e0cc; }
+        body.dark .timeline-period { color: #ccc; }
+
+        /* Modal text */
+        body.dark .modal-section p { color: #e8e0cc; border-left-color: var(--yellow); }
+        body.dark .modal-section ul li { color: #e8e0cc; background: #2a2a2a; border-color: #e8e0cc; box-shadow: 2px 2px 0 #e8e0cc; }
+        body.dark .modal-section ul li::before { color: var(--red); }
+        body.dark .modal-media-label { color: #e8e0cc; }
+        body.dark .modal-media-hint { color: #bbb; }
+
+        /* Hero text */
+        body.dark .hero-greeting { color: #e8e0cc; }
+        body.dark .hero h1 { color: #e8e0cc; }
+        body.dark .hero-description { color: #e8e0cc; }
+
+        /* Contact text */
+        body.dark .contact-info p,
+        body.dark .contact-info h3 { color: #e8e0cc; }
+        body.dark .contact-link { color: #e8e0cc; border-color: #e8e0cc; }
+        body.dark .contact-link:hover { background: var(--red); color: var(--yellow); }
+        /* contact inline paragraph */
+        body.dark #contact p { color: #e8e0cc; }
+
+        /* Tags */
+        body.dark .tag { background: #2a2a2a; border-color: #e8e0cc; color: #e8e0cc; }
+
+        /* Broad catch-all for any remaining dark text in sections */
+        body.dark section p,
+        body.dark section li,
+        body.dark section span:not(.tag):not(.section-label):not(.hero-label) { color: #e8e0cc; }
+        /* Keep intentionally colored elements */
+        body.dark .btn-primary { color: var(--yellow) !important; }
+        body.dark .btn-secondary { color: #0f0f0f !important; }
+        body.dark .section-title,
+        body.dark .modal-section-title,
+        body.dark .section-label,
+        body.dark .hero-label,
+        body.dark .timeline-date { color: var(--yellow); }
+        body.dark .tab-btn.active { color: var(--black); }
+
+        /* Dark cards */
+        body.dark .project-card,
+        body.dark .timeline-item,
+        body.dark .contact-form,
+        body.dark .contact-info {
+            background: #1e1e1e;
+            border-color: #e8e0cc;
+            box-shadow: 6px 6px 0 #e8e0cc;
+        }
+        body.dark .project-info { background: #1e1e1e; }
+        body.dark .project-image { border-bottom-color: #e8e0cc; }
+        body.dark .tag {
+            background: #2a2a2a;
+            border-color: #e8e0cc;
+            color: #e8e0cc;
+        }
+
+        /* Dark hero */
+        body.dark .hero-image-frame { border-color: #e8e0cc; }
+        body.dark .hero-image-placeholder { background: #2a2a2a; }
+        body.dark .hero-description {
+            background: #1e1e1e;
+            border-color: #e8e0cc;
+            color: #e8e0cc;
+        }
+
+        /* Dark buttons */
+        body.dark .btn {
+            border-color: #e8e0cc;
+            box-shadow: 6px 6px 0 #e8e0cc;
+        }
+        body.dark .btn-primary { background: var(--red); color: var(--yellow); }
+        body.dark .btn-secondary { background: var(--cyan); color: #0f0f0f; }
+        body.dark .btn:hover { box-shadow: 2px 2px 0 #e8e0cc; }
+
+        /* Dark modal */
+        body.dark .modal { background: #1a1a1a; border-left-color: #e8e0cc; }
+        body.dark .modal-header { background: #1a1a1a; border-bottom-color: #e8e0cc; }
+        body.dark .modal-title { color: var(--yellow); }
+        body.dark .modal-close { border-color: #e8e0cc; color: #e8e0cc; }
+        body.dark .modal-section-title { color: var(--yellow); border-bottom-color: #e8e0cc; }
+        body.dark .modal-section p,
+        body.dark .modal-section li { color: #e8e0cc; }
+        body.dark .modal-media-placeholder {
+            background: #2a2a2a;
+            border-color: #e8e0cc;
+        }
+
+        /* Dark timeline */
+        body.dark .timeline-content {
+            background: #1e1e1e;
+            border-color: #e8e0cc;
+        }
+        body.dark .timeline::before { background: #e8e0cc; }
+        body.dark .timeline-dot { background: var(--yellow); border-color: #e8e0cc; }
+
+        /* Dark footer */
+        body.dark footer {
+            background: #0f0f0f;
+            border-top-color: #e8e0cc;
+            color: #e8e0cc;
+        }
+        body.dark .footer-icon { background: #1e1e1e; border-color: #e8e0cc; box-shadow: 3px 3px 0 #e8e0cc; }
+        body.dark .footer-icon svg { filter: brightness(0) invert(0.9); }
+        body.dark .footer-icon:hover { background: var(--red); }
+
+        /* ── FLOATING DARK MODE TOGGLE ── */
+        #darkToggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--black);
+            box-shadow: 4px 4px 0 var(--black);
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1300;
+            transition: background 0.2s, opacity 0.2s, transform 0.15s;
+            padding: 0;
+            color: var(--black);
+            touch-action: none;
+            user-select: none;
+        }
+        #darkToggle:active { cursor: grabbing; transform: scale(0.92); }
+        #darkToggle:hover { background: var(--yellow); }
+        #darkToggle svg { width: 20px; height: 20px; pointer-events: none; }
+        #darkToggle.hidden { opacity: 0; pointer-events: none; }
+
+        body.dark #darkToggle {
+            background: #1e1e1e;
+            border-color: #e8e0cc;
+            box-shadow: 4px 4px 0 #e8e0cc;
+            color: #ffe600;
+        }
+        body.dark #darkToggle:hover { background: #2a2a2a; }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html, body {
@@ -28,12 +233,13 @@
         body {
             font-family: 'Comic Neue', cursive;
             background-color: var(--bg);
-            background-image: radial-gradient(circle, #ccc5a8 1px, transparent 1px);
-            background-size: 22px 22px;
+            background-image: radial-gradient(circle, #ccc5a8 1.5px, transparent 1.5px);
+            background-size: 18px 18px;
             color: var(--black);
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
+
 
         /* NAV */
         nav {
@@ -412,8 +618,42 @@
         /* SECTIONS */
         section {
             padding: 7rem 4rem;
-            max-width: 1400px; margin: 0 auto;
+            max-width: 100%;
             scroll-margin-top: 80px;
+            position: relative;
+        }
+
+        section > * {
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Per-section background colors — dot pattern shows through */
+        #home    { background: transparent; }
+
+        #research {
+            background-color: #fdf0f0;
+            background-image: radial-gradient(circle, #d4a0a0 1.5px, transparent 1.5px);
+            background-size: 18px 18px;
+        }
+
+        #experience {
+            background-color: #f0f5ff;
+            background-image: radial-gradient(circle, #94aad4 1.5px, transparent 1.5px);
+            background-size: 18px 18px;
+        }
+
+        #education {
+            background-color: #f0fbf0;
+            background-image: radial-gradient(circle, #88bb88 1.5px, transparent 1.5px);
+            background-size: 18px 18px;
+        }
+
+        #contact {
+            background-color: #fffbea;
+            background-image: radial-gradient(circle, #c8b840 1.5px, transparent 1.5px);
+            background-size: 18px 18px;
         }
 
         .section-header { margin-bottom: 3.5rem; }
@@ -1072,7 +1312,27 @@
 </style>
 </head>
 <body>
-
+<!-- FLOATING DARK MODE TOGGLE -->
+<button id="darkToggle" aria-label="Toggle dark mode" title="Toggle day/night">
+    <svg id="darkIcon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sun (shown in light mode) -->
+        <g id="sunIcon">
+            <circle cx="12" cy="12" r="5" fill="currentColor"/>
+            <line x1="12" y1="2" x2="12" y2="5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="2" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="19" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="4.22" y1="19.78" x2="6.34" y2="17.66" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <!-- Moon (shown in dark mode, hidden by default) -->
+        <g id="moonIcon" style="display:none">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/>
+        </g>
+    </svg>
+</button>
 <!-- NAV -->
 <div class="nav-overlay" id="navOverlay"></div>
 <nav id="navbar">
@@ -1084,12 +1344,12 @@
     </button>
     <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
-        <li><a href="#research">Research</a></li>
+        <li><a href="#research">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="Daipayan_Sen_Resume.pdf" target="_blank">Resume</a></li>
         <li class="nav-social-row">
-            <a href="mailto:sen00041@umn.edu" class="nav-social-icon" title="Email">
+            <a href="/cdn-cgi/l/email-protection#96e5f3f8a6a6a6a2a7d6e3fbf8b8f3f2e3" class="nav-social-icon" title="Email">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
                     <polyline points="2,4 12,13 22,4"/>
@@ -1455,7 +1715,7 @@
         </p>
 
         <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
-            <a href="mailto:sen00041@umn.edu" class="btn btn-primary" style="min-width:200px;">
+            <a href="/cdn-cgi/l/email-protection#691a0c075959595d58291c0407470c0d1c" class="btn btn-primary" style="min-width:200px;">
                 ✉️ Say Hello
             </a>
 
@@ -1478,7 +1738,7 @@
 <!-- FOOTER -->
 <footer>
     <p>⚡ &copy; 2026 Daipayan &nbsp;|&nbsp; University of Minnesota &nbsp;|&nbsp; Mechanical Engineering ⚡</p>
-    <p style="font-size:0.75rem; opacity:0.5; margin-top:0.4rem; letter-spacing:1px;">v2.6</p>
+    <p style="font-size:0.75rem; opacity:0.5; margin-top:0.4rem; letter-spacing:1px;">v3.4</p>
 </footer>
 <!-- MODAL OVERLAY -->
 <div class="modal-overlay" id="modalOverlay">
@@ -1778,6 +2038,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close nav panel and hide hamburger while project drawer is open
         closeNav();
         if (hamburger) hamburger.classList.add('hidden');
+        if (darkToggle) darkToggle.classList.add('hidden');
 
         // Show drawer immediately with a loading state for the media area
         const sectionsHTML = data.sections.map(sec => {
@@ -1821,8 +2082,9 @@ document.addEventListener('DOMContentLoaded', function() {
         modalOverlay.classList.remove('active');
         document.body.style.overflow = '';
         if (activeModelCleanup) { activeModelCleanup(); activeModelCleanup = null; }
-        // Restore hamburger button
+        // Restore hamburger and dark toggle
         if (hamburger) hamburger.classList.remove('hidden');
+        if (darkToggle) darkToggle.classList.remove('hidden');
     }
 
     if (modalClose) modalClose.addEventListener('click', closeModal);
@@ -1870,6 +2132,7 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.classList.add('active');
         if (navOverlay) navOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
+        if (darkToggle) darkToggle.classList.add('hidden');
     }
 
     function closeNav() {
@@ -1877,6 +2140,10 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.classList.remove('active');
         if (navOverlay) navOverlay.classList.remove('active');
         document.body.style.overflow = '';
+        // Only show toggle if modal is not open
+        if (!document.getElementById('modalOverlay')?.classList.contains('active')) {
+            if (darkToggle) darkToggle.classList.remove('hidden');
+        }
     }
 
     if (hamburger && navLinks) {
@@ -1936,6 +2203,97 @@ document.addEventListener('DOMContentLoaded', function() {
         alert("Message sent! I'll get back to you soon. POW!");
         e.target.reset();
     });
+
+
+    // ── DARK MODE FLOATING TOGGLE ──
+    const darkToggle = document.getElementById('darkToggle');
+    const sunIcon    = document.getElementById('sunIcon');
+    const moonIcon   = document.getElementById('moonIcon');
+
+    function applyDark(on) {
+        document.body.classList.toggle('dark', on);
+        if (sunIcon)  sunIcon.style.display  = on ? 'none'  : '';
+        if (moonIcon) moonIcon.style.display = on ? ''      : 'none';
+        try { localStorage.setItem('darkMode', on ? '1' : '0'); } catch(e) {}
+    }
+
+    // Restore preference
+    try {
+        const saved = localStorage.getItem('darkMode');
+        if (saved === '1') applyDark(true);
+    } catch(e) {}
+
+    // Click to toggle (only if not dragging)
+    let didDrag = false;
+    if (darkToggle) {
+        darkToggle.addEventListener('click', () => {
+            if (!didDrag) applyDark(!document.body.classList.contains('dark'));
+            didDrag = false;
+        });
+    }
+
+    // ── DRAGGABLE LOGIC ──
+    if (darkToggle) {
+        let dragging = false;
+        let startX, startY, origX, origY;
+
+        function getPos() {
+            const r = darkToggle.getBoundingClientRect();
+            return { x: r.left, y: r.top };
+        }
+
+        function setPos(x, y) {
+            // Clamp to viewport
+            const w = window.innerWidth  - darkToggle.offsetWidth  - 6;
+            const h = window.innerHeight - darkToggle.offsetHeight - 6;
+            x = Math.max(6, Math.min(x, w));
+            y = Math.max(6, Math.min(y, h));
+            darkToggle.style.right  = 'auto';
+            darkToggle.style.bottom = 'auto';
+            darkToggle.style.left   = x + 'px';
+            darkToggle.style.top    = y + 'px';
+        }
+
+        // Mouse
+        darkToggle.addEventListener('mousedown', e => {
+            dragging = true; didDrag = false;
+            const pos = getPos();
+            startX = e.clientX; startY = e.clientY;
+            origX  = pos.x;     origY  = pos.y;
+            darkToggle.style.cursor = 'grabbing';
+            e.preventDefault();
+        });
+        document.addEventListener('mousemove', e => {
+            if (!dragging) return;
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            if (Math.abs(dx) > 4 || Math.abs(dy) > 4) didDrag = true;
+            setPos(origX + dx, origY + dy);
+        });
+        document.addEventListener('mouseup', () => {
+            dragging = false;
+            darkToggle.style.cursor = 'grab';
+        });
+
+        // Touch
+        darkToggle.addEventListener('touchstart', e => {
+            dragging = true; didDrag = false;
+            const pos = getPos();
+            const t = e.touches[0];
+            startX = t.clientX; startY = t.clientY;
+            origX  = pos.x;     origY  = pos.y;
+            e.preventDefault();
+        }, { passive: false });
+        document.addEventListener('touchmove', e => {
+            if (!dragging) return;
+            const t = e.touches[0];
+            const dx = t.clientX - startX;
+            const dy = t.clientY - startY;
+            if (Math.abs(dx) > 4 || Math.abs(dy) > 4) didDrag = true;
+            setPos(origX + dx, origY + dy);
+        }, { passive: false });
+        document.addEventListener('touchend', () => { dragging = false; });
+    }
 
 }); // end DOMContentLoaded
 </script>
