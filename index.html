@@ -260,6 +260,13 @@
 
         .nav-links { display: flex; gap: 1.5rem; list-style: none; }
 
+        /* Contact link: visible on desktop only */
+        .desktop-contact { display: list-item; }
+
+        @media (max-width: 768px) {
+            .desktop-contact { display: none !important; }
+        }
+
         .nav-links a {
             font-family: 'Bangers', cursive;
             font-size: 1.15rem; letter-spacing: 2px;
@@ -1343,8 +1350,9 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="Daipayan_Sen_Resume.pdf" target="_blank">Resume</a></li>
+        <li class="desktop-contact"><a href="#contact">Contact</a></li>
         <li class="nav-social-row">
-            <a href="/cdn-cgi/l/email-protection#96e5f3f8a6a6a6a2a7d6e3fbf8b8f3f2e3" class="nav-social-icon" title="Email">
+            <a href="mailto:sen00041@umn.edu" class="nav-social-icon" title="Email">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
                     <polyline points="2,4 12,13 22,4"/>
@@ -1708,7 +1716,7 @@
         </p>
 
         <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
-            <a href="/cdn-cgi/l/email-protection#691a0c075959595d58291c0407470c0d1c" class="btn btn-primary" style="min-width:200px;">
+            <a href="mailto:sen00041@umn.edu" class="btn btn-primary" style="min-width:200px;">
                 ✉️ Say Hello
             </a>
 
@@ -1731,7 +1739,7 @@
 <!-- FOOTER -->
 <footer>
     <p>⚡ &copy; 2026 Daipayan &nbsp;|&nbsp; University of Minnesota &nbsp;|&nbsp; Mechanical Engineering ⚡</p>
-    <p style="font-size:0.75rem; opacity:0.5; margin-top:0.4rem; letter-spacing:1px;">v3.7</p>
+    <p style="font-size:0.75rem; opacity:0.5; margin-top:0.4rem; letter-spacing:1px;">v3.8</p>
 </footer>
 <!-- MODAL OVERLAY -->
 <div class="modal-overlay" id="modalOverlay">
